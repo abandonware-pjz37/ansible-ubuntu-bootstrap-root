@@ -24,7 +24,7 @@
     - user:
         name="{{ ubuntu_bootstrap_user_name }}"
         password="{{ ubuntu_bootstrap_user_password }}"
-        shell=/usr/bin/zsh
+        shell=/bin/zsh
         groups="{{ ubuntu_bootstrap_user_name }},sudo"
     - file:
         path: "/home/{{ ubuntu_bootstrap_user_name }}/.ssh"
