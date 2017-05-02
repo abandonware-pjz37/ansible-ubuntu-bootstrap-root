@@ -1,0 +1,30 @@
+language:
+  - python
+
+python:
+  - "2.7"
+
+sudo:
+  - required
+
+install:
+  - sudo pip install 'requests[security]'
+  - sudo pip install ansible
+
+script:
+  - python --version
+
+  - ansible-galaxy install -r requirements.txt -p _3rdParty/roles
+
+  - mkdir host_vars/
+  - cp sample/localhost.yml host_vars/
+
+  # Basic role syntax check
+  - ansible-playbook role.yml -i tests/inventory --syntax-check
+
+  # Run local test
+  - ansible-playbook role.yml -i tests/inventory --connection=local
+
+  # Run idempotency test
+  - ansible-playbook role.yml -i tests/inventory --connection=local | tee log
+  - grep ' changed=0 ' log || exit 1
