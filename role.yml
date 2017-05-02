@@ -19,6 +19,8 @@
     ssh_key_public: "{{ lookup('file', ssh_key_public_path) }}"
   tasks:
     - apt: name=zsh state=present
+    - group:
+        name="{{ ubuntu_bootstrap_user_name }}"
     - user:
         name="{{ ubuntu_bootstrap_user_name }}"
         password="{{ ubuntu_bootstrap_user_password }}"
