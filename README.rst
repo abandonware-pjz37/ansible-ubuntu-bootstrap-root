@@ -5,10 +5,13 @@ Ubuntu Bootstrap Root
   :target: https://travis-ci.org/ansible-stuff/ubuntu-bootstrap-root/builds
 
 Ansible role for initializing Ubuntu remote (root part):
-* Increase security of SSH service (see `ansible-stuff.ssh <https://galaxy.ansible.com/ansible-stuff/ssh/>`__ **!!! WARNING:** This script will **disable** SSH password authentication **!!!**)
+
+* Increase security of SSH service by `ansible-stuff.ssh <https://galaxy.ansible.com/ansible-stuff/ssh/>`__
 * Setup autoupgrade by `jnv.unattended-upgrades <https://galaxy.ansible.com/jnv/unattended-upgrades/>`__
 * Create new sudo user with ``zsh`` shell
 * Add ``id_rsa.pub`` from local machine to ``.ssh/authorized_keys`` on remote
+
+**!!! WARNING:** This script will **disable** SSH password authentication **!!!**
 
 Usage
 -----
@@ -61,7 +64,7 @@ Install dependencies:
 
 .. code-block:: none
 
-  > ansible-galaxy install -r requirements.txt -p _3rdParty/roles
+  [ubuntu-bootstrap-root]> ansible-galaxy install -r requirements.txt -p _3rdParty/roles
 
 Run playbook:
 
