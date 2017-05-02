@@ -47,12 +47,13 @@ Update content of this file:
 Role Variables
 --------------
 
-============================== ==============================
-Name                           Description
-============================== ==============================
-ubuntu_bootstrap_user_name     Name of newly created user
-ubuntu_bootstrap_user_password Password of newly created user
-============================== ==============================
+================================ ==================================================
+Name                             Description
+================================ ==================================================
+ubuntu_bootstrap_user_name       Name of newly created user
+ubuntu_bootstrap_user_password   Password of newly created user
+ubuntu_bootstrap_do_not_copy_key Do not copy id_rsa.pub content to .authorized_keys
+================================ ==================================================
 
 Password can be created by command ``mkpasswd --method=sha-512``
 (on Ubuntu it can be installed by ``apt-get install -y whois``).
