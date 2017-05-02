@@ -32,6 +32,7 @@
         mode: 0700
         owner: "{{ ubuntu_bootstrap_user_name }}"
         group: "{{ ubuntu_bootstrap_user_name }}"
+      when: not ubuntu_bootstrap_do_not_copy_key
     # http://stackoverflow.com/a/34929776/2288008
     - copy:
         content: ""
@@ -40,6 +41,8 @@
         owner: "{{ ubuntu_bootstrap_user_name }}"
         group: "{{ ubuntu_bootstrap_user_name }}"
         mode: 0600
+      when: not ubuntu_bootstrap_do_not_copy_key
     - lineinfile:
         path: "/home/{{ ubuntu_bootstrap_user_name }}/.ssh/authorized_keys"
         line: "{{ ssh_key_public }}"
+      when: not ubuntu_bootstrap_do_not_copy_key
