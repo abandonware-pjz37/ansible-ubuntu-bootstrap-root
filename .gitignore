@@ -1,2 +1,3 @@
 _3rdParty/roles/*
 hosts
+host_vars
