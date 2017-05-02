@@ -1,0 +1,5 @@
+---
+ubuntu_bootstrap_user_name: testname
+
+# created by `mkpasswd --method=sha-512` (install on Ubuntu by 'apt-file install -y whois')
+ubuntu_bootstrap_user_password: "$6$nfQKs1BFzLwkK6g$P84Bc1C7JioAjANT.VV0uW0RAii/tKIc7tUrjvj6mWVDYvK2JmEInaDcB7KBrgFL3hXgoPuhqQHarc/AuiG3c0"
