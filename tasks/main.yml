@@ -1,0 +1,40 @@
+---
+
+- name: Install ZSH
+  apt: name=zsh state=present
+
+- name: Create '{{ ubuntu_bootstrap_user_name }}' group
+  group: name="{{ ubuntu_bootstrap_user_name }}"
+
+- name: Create '{{ ubuntu_bootstrap_user_name }}' user
+  user:
+    name="{{ ubuntu_bootstrap_user_name }}"
+    password="{{ ubuntu_bootstrap_user_password }}"
+    shell=/bin/zsh
+    groups="{{ ubuntu_bootstrap_user_name }},sudo"
+
+- name: Create '.ssh' directory
+  file:
+    path: "/home/{{ ubuntu_bootstrap_user_name }}/.ssh"
+    state: directory
+    mode: 0700
+    owner: "{{ ubuntu_bootstrap_user_name }}"
+    group: "{{ ubuntu_bootstrap_user_name }}"
+  when: not ubuntu_bootstrap_do_not_copy_key
+
+# http://stackoverflow.com/a/34929776/2288008
+- name: Create '.ssh/authorized_keys' file
+  copy:
+    content: ""
+    dest: "/home/{{ ubuntu_bootstrap_user_name }}/.ssh/authorized_keys"
+    force: no
+    owner: "{{ ubuntu_bootstrap_user_name }}"
+    group: "{{ ubuntu_bootstrap_user_name }}"
+    mode: 0600
+  when: not ubuntu_bootstrap_do_not_copy_key
+
+- name: Copy public key to remote
+  lineinfile:
+    path: "/home/{{ ubuntu_bootstrap_user_name }}/.ssh/authorized_keys"
+    line: "{{ ubuntu_bootstrap_root_ssh_key_public }}"
+  when: not ubuntu_bootstrap_do_not_copy_key

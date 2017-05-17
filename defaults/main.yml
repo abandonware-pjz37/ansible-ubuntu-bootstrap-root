@@ -1,0 +1,5 @@
+---
+
+ubuntu_bootstrap_root_ssh_key_public_path: "{{ lookup('env', 'HOME') + '/.ssh/id_rsa.pub' }}"
+ubuntu_bootstrap_root_ssh_key_public: "{{ lookup('file', ubuntu_bootstrap_root_ssh_key_public_path) }}"
+ubuntu_bootstrap_do_not_copy_key: False

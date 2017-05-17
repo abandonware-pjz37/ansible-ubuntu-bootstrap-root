@@ -1,0 +1,20 @@
+---
+dependencies:
+  - role: ansible-stuff.ssh
+
+  - role: jnv.unattended-upgrades
+    unattended_origins_patterns:
+      - 'origin=Ubuntu,archive=stable'
+      - 'origin=Ubuntu,archive=${distro_codename}-security'
+      - 'origin=Ubuntu,archive=${distro_codename}-updates'
+    unattended_remove_unused_dependencies: true
+    unattended_automatic_reboot: true
+    unattended_ignore_apps_require_restart: true
+
+  - role: kamaln7.swapfile
+    swapfile_size: 4G
+
+    # https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04#tweak-your-swap-settings
+    # "For a VPS system, we'd probably want to move it closer to 0."
+    swapfile_swappiness: 10
+    swapfile_vfs_cache_pressure: 50
