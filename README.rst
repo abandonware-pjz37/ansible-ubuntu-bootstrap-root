@@ -73,6 +73,76 @@ Run playbook:
 .. code-block:: none
 
   [ubuntu-bootstrap-root]> ansible-playbook --inventory-file hosts role.yml
+  
+Integrate Playbook
+------------------
+
+`Ansible Galaxy <https://galaxy.ansible.com/ansible-stuff/ssh/>`__
+can help you to integrate this role into your project.
+
+Create ``requirements.yaml`` file with content:
+
+.. code-block:: yaml
+
+  - name: ansible-stuff.ubuntu-bootstrap-root
+    version: v1.0
+
+Add custom path for externally downloaded roles to ``ansible.cfg``:
+
+.. code-block:: none
+
+  [defaults]
+  roles_path=_3rdParty/roles
+
+Install dependencies:
+
+.. code-block:: none
+
+  > ansible-galaxy install -r requirements.yaml -p _3rdParty/roles
+
+Here is a playbook example ``role.yml``:
+
+.. code-block:: yaml
+
+  ---
+  - hosts: ubuntu-bootstrap-root
+    roles:
+      - role: ansible-stuff.ubuntu-bootstrap-root
+
+And inventory example ``hosts``:
+
+.. code-block:: none
+
+  [ubuntu-bootstrap-root]
+  my-machine.example.com
+  
+Host variables can be saved separately:
+
+.. code-block:: none
+
+  > mkdir host_vars/
+  > touch host_vars/my-machine.example.com.yml
+
+With content:
+
+.. code-block:: yaml
+
+  ---
+  ansible_user: root
+  ansible_port: 12345
+  ansible_become_pass: mypassword
+
+  # User that will be created
+  ubuntu_bootstrap_user_name: mynewuser
+
+  # created by `mkpasswd --method=sha-512` (install on Ubuntu by 'apt-get install -y whois')
+  ubuntu_bootstrap_user_password: "$6$DHApLZu...AwXZ8t/"
+
+Run playbook:
+
+.. code-block:: none
+
+  > ansible-playbook --inventory-file hosts role.yml
 
 License
 -------
