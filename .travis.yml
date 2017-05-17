@@ -14,7 +14,7 @@ install:
 script:
   - python --version
 
-  - ansible-galaxy install -r requirements.txt -p _3rdParty/roles
+  - ansible-galaxy install -r requirements.yaml -p _3rdParty/roles
 
   - mkdir host_vars/
   - cp sample/localhost.yml host_vars/
