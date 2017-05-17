@@ -8,5 +8,3 @@ ubuntu_bootstrap_user_name: mynewuser
 
 # created by `mkpasswd --method=sha-512` (install on Ubuntu by 'apt-get install -y whois')
 ubuntu_bootstrap_user_password: "$6$DHApLZuVa8$E0ggh1gwr7HM.Tz61NE5EzpNfpKp4D0WPM58E8Pu7W6qqQcxWSgmrWPnraqVNij6xPBDYHz27Bsr/LIAwXZ8t/"
-
-ubuntu_bootstrap_do_not_copy_key: false
