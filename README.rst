@@ -8,6 +8,7 @@ Ansible role for initializing Ubuntu remote (root part):
 
 * Increase security of SSH service by `ansible-stuff.ssh <https://galaxy.ansible.com/ansible-stuff/ssh/>`__
 * Setup autoupgrade by `jnv.unattended-upgrades <https://galaxy.ansible.com/jnv/unattended-upgrades/>`__
+* Create swapfile by `kamaln7.swapfile <https://galaxy.ansible.com/kamaln7/swapfile/>`__
 * Create new sudo user with ``zsh`` shell
 * Add ``id_rsa.pub`` from local machine to ``.ssh/authorized_keys`` on remote
 
