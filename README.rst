@@ -73,7 +73,7 @@ Run playbook:
 .. code-block:: none
 
   [ubuntu-bootstrap-root]> ansible-playbook --inventory-file hosts role.yml
-  
+
 Integrate Playbook
 ------------------
 
@@ -106,6 +106,7 @@ Here is a playbook example ``role.yml``:
 
   ---
   - hosts: ubuntu-bootstrap-root
+    become: true
     roles:
       - role: ansible-stuff.ubuntu-bootstrap-root
 
@@ -115,7 +116,7 @@ And inventory example ``hosts``:
 
   [ubuntu-bootstrap-root]
   my-machine.example.com
-  
+
 Host variables can be saved separately:
 
 .. code-block:: none
