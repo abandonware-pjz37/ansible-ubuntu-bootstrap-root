@@ -1,4 +1,25 @@
 ---
+
+galaxy_info:
+  author: Ruslan Baratov
+  description: Ubuntu bootstrap
+  issue_tracker_url: https://github.com/ansible-stuff/ubuntu-bootstrap-root/issues
+
+  license: BSD
+
+  min_ansible_version: 1.2
+
+  github_branch: master
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+    - system
+    - ubuntu
+
 dependencies:
   - role: ansible-stuff.ssh
 

@@ -28,3 +28,6 @@ script:
   # Run idempotency test
   - ansible-playbook role.yml -i tests/inventory --connection=local | tee log
   - grep ' changed=0 ' log || exit 1
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
